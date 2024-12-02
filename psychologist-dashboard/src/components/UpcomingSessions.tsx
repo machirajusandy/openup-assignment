@@ -10,12 +10,12 @@ const UpcomingSessions = ({
   onDeleteAppointment
 }: {
   appointments: Appointment[] | null
-  onDeleteAppointment: (clientId: string, appointmentId: string) => void
+  onDeleteAppointment: () => void
 }) => {
   const removeSession = async (clientId: string, appointmentId: string) => {
     try {
       await clientService.deleteAppointment(clientId, appointmentId)
-      onDeleteAppointment(clientId, appointmentId)
+      onDeleteAppointment()
     } catch (error) {
       console.error('Error removing session:', error)
     }

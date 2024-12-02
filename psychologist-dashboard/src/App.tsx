@@ -31,16 +31,7 @@ function App() {
     setPsychologist(updatedPsychologist)
   }
 
-  function handleDeleteAppointment(clientId: string, appointmentId: string) {
-    console.log('Deleting appointment:', clientId, appointmentId)
-    const updatedPsychologist = {
-      ...psychologist,
-      bookedAppointments: psychologist?.bookedAppointments?.filter(
-        (appointment) => appointment.id !== appointmentId
-      )
-    }
-    setPsychologist(updatedPsychologist)
-  }
+ 
 
   useEffect(() => {
     if (isMounted.current) {
@@ -57,7 +48,7 @@ function App() {
         <div className="space-y-6">
           <UpcomingSessions
             appointments={psychologist?.bookedAppointments}
-            onDeleteAppointment={handleDeleteAppointment}
+            onDeleteAppointment={getPsychologistById}
           />
           <AddAvailability
             psychologistId={psychologistId}
